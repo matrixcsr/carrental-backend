@@ -4,7 +4,7 @@ require("dotenv").config();
 const { check, validationResult } = require("express-validator");
 const router = express.Router();
 
-router.get("/getUser", async (req, res) => {
+router.get("/User", async (req, res) => {
   try {
     const User = await Users.find();
     res.send(User);
@@ -13,7 +13,7 @@ router.get("/getUser", async (req, res) => {
   }
 });
 
-router.get("/getUser/:id", async (req, res) => {
+router.get("/User/:id", async (req, res) => {
   try {
     const User = await Users.find({ id: req.params.id });
     res.send(User);
@@ -23,7 +23,7 @@ router.get("/getUser/:id", async (req, res) => {
 });
 
 router.post(
-  "/addUser",
+  "/User",
   [
     check("name", "Name is missing").not().isEmpty(),
     check("email", "email is missing").not().isEmpty(),
@@ -48,7 +48,7 @@ router.post(
 );
 
 router.put(
-  "/editUser",
+  "/User",
   [
     check("name", "Name is missing").not().isEmpty(),
     check("email", "email is missing").not().isEmpty(),
