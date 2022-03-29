@@ -73,4 +73,21 @@ router.put(
   }
 );
 
+
+//route delete api/todos
+//desc delete todo by id
+//access public
+router.delete('/:id', async (req, res) => {
+  try {
+    const user = await Users.findOneAndRemove({ id: req.params.id });
+    if (!user) {
+      return res.status(404).send('user not found');
+    }
+
+    res.send('user deleted');
+  } catch (err) {
+    return res.status(500).send('Server error');
+  }
+});
+
 module.exports = router;
